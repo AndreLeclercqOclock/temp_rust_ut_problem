@@ -8,10 +8,15 @@ fn private_function() {
     println!("private function");
 }
 
-// TODO: I want to move this unit test to the tests.rs file
-mod tests {
-   #[test]
-    fn test_private_function() {
-        super::private_function()
-    } 
-}
+// Option 1 : Test directly into module file
+//mod tests {
+//   #[test]
+//    fn test_private_function() {
+//        super::private_function()
+//    } 
+//}
+
+// Option 2 : Use submodule ? to test private function.
+#[cfg(test)]
+#[path ="./tests_modules.rs"]
+mod tests_modules;
